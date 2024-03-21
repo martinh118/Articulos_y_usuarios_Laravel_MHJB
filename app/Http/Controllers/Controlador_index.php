@@ -16,6 +16,12 @@ class controlador_index extends Controller
        return view('welcome', compact('arts'));
     }
 
+    public function indexLogged()
+    {
+       $arts = DB::table('articles')->simplePaginate(5);
+       return view('dashboard', compact('arts'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
