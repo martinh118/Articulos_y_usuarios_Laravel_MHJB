@@ -1,0 +1,9 @@
+.articulo,
+.tituloArticulo {
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+}
+
+.editButton{
+    color: blue;
+}

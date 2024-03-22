@@ -22,6 +22,8 @@ class controlador_index extends Controller
        return view('dashboard', compact('arts'));
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -43,7 +45,7 @@ class controlador_index extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $id;
     }
 
     /**
