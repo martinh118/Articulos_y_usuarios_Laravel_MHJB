@@ -5,5 +5,9 @@
 }
 
 .editButton{
-    color: blue;
+    color: rgb(17, 102, 158);
+}
+
+.contArticulos{
+    background-color: rgb(235, 235, 235);
 }

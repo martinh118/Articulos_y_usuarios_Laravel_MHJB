@@ -53,7 +53,8 @@ class controlador_index extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $articuloUnico = DB::table('articles')->select('*')->where('ID', $id)->first();
+       return view('edit', compact('articuloUnico'));
     }
 
     /**

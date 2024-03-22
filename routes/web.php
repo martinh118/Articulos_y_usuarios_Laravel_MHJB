@@ -21,7 +21,7 @@ Route::get('/', [controlador_index::class, 'index']);
 
 Route::get('/dashboard', [controlador_index::class, 'indexLogged'])->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::get('/dashboard/{articulo}', [controlador_index::class, 'edit'])->name('dashboard.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,4 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
