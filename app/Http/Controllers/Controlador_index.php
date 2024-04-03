@@ -12,14 +12,14 @@ class controlador_index extends Controller
      */
     public function index()
     {
-       $arts = DB::table('articles')->simplePaginate(5);
-       return view('welcome', compact('arts'));
+        $arts = DB::table('articles')->simplePaginate(5);
+        return view('welcome', compact('arts'));
     }
 
     public function indexLogged()
     {
-       $arts = DB::table('articles')->simplePaginate(5);
-       return view('dashboard', compact('arts'));
+        $arts = DB::table('articles')->simplePaginate(5);
+        return view('dashboard', compact('arts'));
     }
 
 
@@ -54,15 +54,19 @@ class controlador_index extends Controller
     public function edit(string $id)
     {
         $articuloUnico = DB::table('articles')->select('*')->where('ID', $id)->first();
-       return view('edit', compact('articuloUnico'));
+        return view('edit', compact('articuloUnico'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(string $id, Request $request)
     {
-        //
+        $contenido = $request->contentArt;
+        DB::table('articles')->where('ID', $id)->update(['article' => $contenido]);
+
+        return redirect()->route('dashboard', $id)->with('success', '¡Artículo editado exitosamente!');
+
     }
 
     /**

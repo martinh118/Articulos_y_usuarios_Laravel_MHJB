@@ -23,6 +23,8 @@ Route::get('/dashboard', [controlador_index::class, 'indexLogged'])->middleware(
 
 Route::get('/dashboard/{articulo}', [controlador_index::class, 'edit'])->name('dashboard.edit');
 
+Route::post('/dashboard/{articulo}', [controlador_index::class, 'update'])->name('dashboard.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

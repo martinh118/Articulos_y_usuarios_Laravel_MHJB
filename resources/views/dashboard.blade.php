@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="/css/dashboard.css">
-   
+
 </head>
 
 <x-app-layout>
@@ -19,13 +19,18 @@
                         <div class="col">
 
                             @csrf
+                            @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                            @endif
                             <section class='articles'>
                                 <ul>
                                     @forelse($arts as $articulo)
                                     <li class="articulo">
                                         <b>{{ $articulo->{'ID'} }}</b>: "{{ $articulo->{'article'} }}"
                                         <!-- Button trigger modal -->
-                                        <a  href="{{route('dashboard.edit', $articulo->{'ID'})}}" class="editButton" >
+                                        <a href="{{route('dashboard.edit', $articulo->{'ID'})}}" class="editButton">
                                             Edit
                                         </a>
 
@@ -50,5 +55,3 @@
 
 
 </x-app-layout>
-
-
