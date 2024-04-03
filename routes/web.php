@@ -19,10 +19,13 @@ Route::get('/', [controlador_index::class, 'index']);
 
 // Route::get('/index', [controlador_index::class, 'index']);
 
+//Llama a la función de la clase controlador_index para visualizar los articulos con la opcion de editarlos.
 Route::get('/dashboard', [controlador_index::class, 'indexLogged'])->middleware(['auth', 'verified'])->name('dashboard');
 
+//Llama a la función de la clase controlador_index para mostrar la pagina de edicion del articulo seleccionado.
 Route::get('/dashboard/{articulo}', [controlador_index::class, 'edit'])->name('dashboard.edit');
 
+//Llama a la función de la clase controlador_index para editar un articulo.
 Route::post('/dashboard/{articulo}', [controlador_index::class, 'update'])->name('dashboard.update');
 
 Route::middleware('auth')->group(function () {

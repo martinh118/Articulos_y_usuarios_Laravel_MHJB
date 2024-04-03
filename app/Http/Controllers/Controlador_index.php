@@ -7,15 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class controlador_index extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+        
+    //Obtener los articulos para mostrarlos en la pagina de anonimo.
     public function index()
     {
         $arts = DB::table('articles')->simplePaginate(5);
         return view('welcome', compact('arts'));
     }
 
+    //Obtener los articulos para mostrarlos en la pagina de usuario.
     public function indexLogged()
     {
         $arts = DB::table('articles')->simplePaginate(5);
@@ -49,7 +49,7 @@ class controlador_index extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar datos del articulo seleccionado en la pagina de edicion del articulo.
      */
     public function edit(string $id)
     {
@@ -58,7 +58,7 @@ class controlador_index extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Editar articulo seleccionado.
      */
     public function update(string $id, Request $request)
     {
