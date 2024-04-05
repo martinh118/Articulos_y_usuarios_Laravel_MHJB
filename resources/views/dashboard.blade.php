@@ -13,11 +13,6 @@
     <div class="py-12 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg">
-                <button class="btnCrearArt">
-                    <a href="{{route('dashboard.showCreate')}}">
-                        Crear articulo
-                    </a>
-                </button>
 
                 <div class="container mt-16 ">
                     <div class="row">
@@ -32,11 +27,8 @@
                             <section class='articles'>
                                 <ul>
                                     @forelse($arts as $articulo)
-
                                     <li class="articulo">
                                         <b>{{ $articulo->{'ID'} }}</b>: "{{ $articulo->{'article'} }}"
-                                        -
-                                        {{ $articulo->{'autor'} }}
                                         <!-- Button trigger modal -->
                                         <a href="{{route('dashboard.edit', $articulo->{'ID'})}}" class="editButton">
                                             Edit

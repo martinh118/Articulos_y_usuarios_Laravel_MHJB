@@ -46,12 +46,7 @@
                         <section class='articles'>
                             <ul>
                                 @forelse($arts as $articulo)
-                                <li class="articulo"><b>{{ $articulo->{'ID'} }}</b>
-                                    :
-                                    "{{ $articulo->{'article'} }}"
-                                    -
-                                    {{ $articulo->{'autor'} }}
-                                </li>
+                                <li class="articulo"><b>{{ $articulo->{'ID'} }}</b>: "{{ $articulo->{'article'} }}"</li>
                                 @empty
                                 <li>Ningún articulo a mostrars!!!</li>
                                 @endforelse

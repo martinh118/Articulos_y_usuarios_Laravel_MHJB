@@ -20,43 +20,16 @@ class controlador_index extends Controller
     {
         $arts = DB::table('articles')->simplePaginate(5);
         return view('dashboard', compact('arts'));
-
     }
 
 
 
-/**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        
-    }
-
-
-    /**
-     * Realiza el insert a la base de datos del nuevo articulo.
-     */
-    public function crearArticulo(Request $request, $usuario)
-    {
-        $contenido = $request->contentArt;
-        $id = $request->idArt;
-        DB::table('articles')->insert([
-            'ID' => $id,
-            'article' => $contenido,
-            'autor' => $usuario
-        ]);
-        return redirect()->route('dashboard')->with('success', '¡Artículo creado correctamente!');
-    }
-
-    /**
-     * Muestra el formulario para crear un articulo.
-     */
-    public function showCreate()
-    {
-        $lastId = DB::table('articles')->select('*')->orderBy('id', 'DESC')->first();
-        $newId = $lastId->ID + 1;
-        return view('showCreate', compact('newId'));
+        //
     }
 
     /**
@@ -96,10 +69,11 @@ class controlador_index extends Controller
 
     }
 
-    //Eliminar articulo.
-    public function destroy($id) {
-        DB::table('articles')->where('ID', $id)->delete();
-        return redirect()->route('dashboard')->with('success', '¡Artículo eliminado correctamente!');
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
-
 }

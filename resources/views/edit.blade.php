@@ -1,17 +1,5 @@
 <h1>EDITAR ARTICLE</h1>
-<script>
-    function confirmDelete(id) {
-        if (confirm("¿Estás seguro de que quieres eliminar este artículo?")) {
-            document.getElementById('deleteForm' + id).submit();
-        }
-    }
 
-    function confirmEdit(id) {
-        if (confirm("¿Estás seguro de que quieres editar este artículo?")) {
-            document.submit();
-        }
-    }
-</script>
 
 
 <form action="{{route('dashboard.update', $articuloUnico->{'ID'})}}" method="POST">
@@ -24,13 +12,8 @@
     <textarea name="contentArt" id="content" cols="30" rows="10">{{ $articuloUnico->{'article'} }}</textarea>
     <br><br>
 
-    <input type="submit" value="Editar" onclick="confirmEdit({{ $articuloUnico->{'ID'} }})">
+    <input type="submit" value="Editar">
 
 </form>
-<form id="deleteForm{{ $articuloUnico->{'ID'} }}" action="{{ route('dashboard.destroy', $articuloUnico->{'ID'}) }}" method="POST" style="display: none;">
-    @csrf
-    @method('DELETE')
-</form>
-<button onclick="confirmDelete({{ $articuloUnico->{'ID'} }})">Eliminar</button>
 
 <button href=""><a href="{{route('dashboard')}}">Cancelar</a></button>
