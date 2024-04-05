@@ -834,7 +834,11 @@
         <section class='articles'>
             <ul>
                 @forelse($arts as $articulo)
-                <li><b>{{ $articulo->{'ID'} }}</b>: {{ $articulo->{'article'} }}</li>
+                <li><b>{{ $articulo->{'ID'} }}</b>
+                    :
+                    "{{ $articulo->{'article'} }}"
+                    
+                </li>
                 @empty
                 <li>Ningún articulo a mostrars!!!</li>
                 @endforelse
