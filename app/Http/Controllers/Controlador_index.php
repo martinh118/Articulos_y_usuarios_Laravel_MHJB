@@ -41,10 +41,24 @@ class controlador_index extends Controller
     {
         $contenido = $request->contentArt;
         $id = $request->idArt;
+        $titol = $request->titolArt;
+
+
+        $request->validate([
+            'image' => 'image|max:2048', // Validar que se suba una imagen válida y con un tamaño máximo de 2MB
+            // Resto de las validaciones
+        ]);
+    
+        // Guardar la imagen en el servidor
+        $imagenPath = $request->file('image')->store('images', 'public');
+
+
         DB::table('articles')->insert([
             'id' => $id,
+            'titulo' => $titol,
             'article' => $contenido,
-            'autor' => $usuario
+            'autor' => $usuario,
+            'src' => $imagenPath
         ]);
         return redirect()->route('dashboard.log')->with('success', '¡Artículo creado correctamente!');
     }
@@ -92,7 +106,11 @@ class controlador_index extends Controller
     public function update(string $id, Request $request)
     {
         $contenido = $request->contentArt;
-        DB::table('articles')->where('id', $id)->update(['article' => $contenido]);
+        $titol = $request->titolArt;
+        DB::table('articles')->where('id', $id)->update([
+            'titulo' => $titol,
+            'article' => $contenido
+        ]);
 
         return redirect()->route('dashboard.log', $id)->with('success', '¡Artículo editado exitosamente!');
 

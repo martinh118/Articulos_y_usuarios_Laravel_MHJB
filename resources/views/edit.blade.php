@@ -19,9 +19,13 @@
     <label for="idArticle">Id Article</label>
     <input type="text" id="idArticle" name="idArt" disabled value="{{ $articuloUnico->{'id'} }}">
     <br><br>
+    <label for="titolArt">Títol</label>
+    <input type="text" id="titolArt" name="titolArt" disabled value="{{ $articuloUnico->{'titulo'} }}">
+    <br><br>
     <label for="">Contingut</label>
     <br><br>
     <textarea name="contentArt" id="content" cols="30" rows="10">{{ $articuloUnico->{'article'} }}</textarea>
+    
     <br><br>
 
     <input type="submit" value="Editar" onclick="confirmEdit({{ $articuloUnico->{'id'} }})">

@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->ID();
+            $table->text('titulo')->nullable();
             $table->text('article')->nullable();
             $table->text('autor')->nullable();
+            $table->text('src')->nullable();
         });
 
     }

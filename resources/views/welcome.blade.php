@@ -46,8 +46,11 @@
                         <section class='articles'>
                             <ul>
                                 @forelse($arts as $articulo)
-                                <li class="articulo"><b>{{ $articulo->{'id'} }}</b>
-                                    :
+                                <li class="articulo"><b>
+                                        @if($articulo->src)
+                                        <img src="{{ asset($articulo->src) }}" alt="Imagen del artículo">
+                                        @endif
+                                        - {{ $articulo->{'titulo'} }} : </b>
                                     "{{ $articulo->{'article'} }}"
                                     -
                                     {{ $articulo->{'autor'} }}

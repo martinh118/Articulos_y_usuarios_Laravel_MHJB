@@ -34,7 +34,12 @@
                                     @forelse($arts as $articulo)
 
                                     <li class="articulo">
-                                        <b>{{ $articulo->{'id'} }}</b>: "{{ $articulo->{'article'} }}"
+                                        @if($articulo->src)
+                                        <img src="{{ asset($articulo->src) }}" alt="Imagen del artículo">
+                                        @endif
+                                        <b>{{ $articulo->{'id'} }}
+                                            - {{ $articulo->{'titulo'} }} : </b>
+                                        "{{ $articulo->{'article'} }}"
                                         -
                                         {{ $articulo->{'autor'} }}
                                         <!-- Button trigger modal -->
