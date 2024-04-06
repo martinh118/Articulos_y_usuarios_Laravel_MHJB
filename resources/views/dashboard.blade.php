@@ -34,11 +34,11 @@
                                     @forelse($arts as $articulo)
 
                                     <li class="articulo">
-                                        <b>{{ $articulo->{'ID'} }}</b>: "{{ $articulo->{'article'} }}"
+                                        <b>{{ $articulo->{'id'} }}</b>: "{{ $articulo->{'article'} }}"
                                         -
                                         {{ $articulo->{'autor'} }}
                                         <!-- Button trigger modal -->
-                                        <a href="{{route('dashboard.edit', $articulo->{'ID'})}}" class="editButton">
+                                        <a href="{{route('dashboard.edit', $articulo->{'id'})}}" class="editButton">
                                             Edit
                                         </a>
 

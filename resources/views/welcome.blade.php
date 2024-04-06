@@ -46,7 +46,7 @@
                         <section class='articles'>
                             <ul>
                                 @forelse($arts as $articulo)
-                                <li class="articulo"><b>{{ $articulo->{'ID'} }}</b>
+                                <li class="articulo"><b>{{ $articulo->{'id'} }}</b>
                                     :
                                     "{{ $articulo->{'article'} }}"
                                     -

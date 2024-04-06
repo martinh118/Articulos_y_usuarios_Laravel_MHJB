@@ -42,11 +42,11 @@ class controlador_index extends Controller
         $contenido = $request->contentArt;
         $id = $request->idArt;
         DB::table('articles')->insert([
-            'ID' => $id,
+            'id' => $id,
             'article' => $contenido,
             'autor' => $usuario
         ]);
-        return redirect()->route('dashboard')->with('success', '¡Artículo creado correctamente!');
+        return redirect()->route('dashboard.log')->with('success', '¡Artículo creado correctamente!');
     }
 
     /**
@@ -55,7 +55,9 @@ class controlador_index extends Controller
     public function showCreate()
     {
         $lastId = DB::table('articles')->select('*')->orderBy('id', 'DESC')->first();
-        $newId = $lastId->ID + 1;
+        if($lastId == null){
+            $newId = 1;
+        }else {$newId = $lastId->id + 1;}
         return view('showCreate', compact('newId'));
     }
 
@@ -80,7 +82,7 @@ class controlador_index extends Controller
      */
     public function edit(string $id)
     {
-        $articuloUnico = DB::table('articles')->select('*')->where('ID', $id)->first();
+        $articuloUnico = DB::table('articles')->select('*')->where('id', $id)->first();
         return view('edit', compact('articuloUnico'));
     }
 
@@ -90,16 +92,16 @@ class controlador_index extends Controller
     public function update(string $id, Request $request)
     {
         $contenido = $request->contentArt;
-        DB::table('articles')->where('ID', $id)->update(['article' => $contenido]);
+        DB::table('articles')->where('id', $id)->update(['article' => $contenido]);
 
-        return redirect()->route('dashboard', $id)->with('success', '¡Artículo editado exitosamente!');
+        return redirect()->route('dashboard.log', $id)->with('success', '¡Artículo editado exitosamente!');
 
     }
 
     //Eliminar articulo.
     public function destroy($id) {
-        DB::table('articles')->where('ID', $id)->delete();
-        return redirect()->route('dashboard')->with('success', '¡Artículo eliminado correctamente!');
+        DB::table('articles')->where('id', $id)->delete();
+        return redirect()->route('dashboard.log')->with('success', '¡Artículo eliminado correctamente!');
     }
 
 }

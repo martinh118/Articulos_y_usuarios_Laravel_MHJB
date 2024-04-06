@@ -28,4 +28,4 @@
 </form>
 
 
-<button href="" onclick="confirmCancel()"><a href="{{route('dashboard')}}">Cancelar</a></button>
+<button href="" onclick="confirmCancel()"><a href="{{route('dashboard.log')}}">Cancelar</a></button>
