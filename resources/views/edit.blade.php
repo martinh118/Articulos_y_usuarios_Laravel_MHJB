@@ -20,12 +20,17 @@
     <input type="text" id="idArticle" name="idArt" disabled value="{{ $articuloUnico->{'id'} }}">
     <br><br>
     <label for="titolArt">Títol</label>
-    <input type="text" id="titolArt" name="titolArt" disabled value="{{ $articuloUnico->{'titulo'} }}">
+    <input type="text" id="titolArt" name="titolArt" value="{{ $articuloUnico->{'titulo'} }}">
     <br><br>
     <label for="">Contingut</label>
     <br><br>
     <textarea name="contentArt" id="content" cols="30" rows="10">{{ $articuloUnico->{'article'} }}</textarea>
-    
+    <br><br>
+    <label for="image">Imagen:</label><br>
+    <input type="file" id="image" name="image" accept="image/*">
+    @error('image')
+    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+    @enderror
     <br><br>
 
     <input type="submit" value="Editar" onclick="confirmEdit({{ $articuloUnico->{'id'} }})">

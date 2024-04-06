@@ -19,14 +19,14 @@
     <input type="text" id="idArticle" name="idArt" value="{{ $newId }}" readonly>
     <br><br>
     <label for="titolArt">Títol</label>
-    <input type="text" id="titolArt" name="titolArt" disabled value="{{ $articuloUnico->{'titulo'} }}">
+    <input type="text" id="titolArt" name="titolArt" value="">
     <br><br>
     <label for="">Contingut</label>
     <br><br>
     <textarea name="contentArt" id="content" cols="30" rows="10"></textarea>
     <br><br>
-
-    <input type="file" name="image" placeholder="Choose image" id="image">
+    <label for="image">Imagen:</label><br>
+    <input type="file" id="image" name="image" accept="image/*">
     @error('image')
     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
     @enderror

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class controlador_index extends Controller
 {
-        
+
     //Obtener los articulos para mostrarlos en la pagina de anonimo.
     public function index()
     {
@@ -20,17 +20,15 @@ class controlador_index extends Controller
     {
         $arts = DB::table('articles')->simplePaginate(5);
         return view('dashboard', compact('arts'));
-
     }
 
 
 
-/**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        
     }
 
 
@@ -43,23 +41,36 @@ class controlador_index extends Controller
         $id = $request->idArt;
         $titol = $request->titolArt;
 
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,webp|max:2048' // Validar que se suba una imagen válida y con un tamaño máximo de 2MB
+                // Resto de las validaciones
+            ]);
+            
+            $imagen = $request->file('image');
 
-        $request->validate([
-            'image' => 'image|max:2048', // Validar que se suba una imagen válida y con un tamaño máximo de 2MB
-            // Resto de las validaciones
-        ]);
-    
-        // Guardar la imagen en el servidor
-        $imagenPath = $request->file('image')->store('images', 'public');
+            // Generar un nombre único para la imagen
+            $nombreImagen = $imagen->getClientOriginalName();
+            $imagen->storeAs('images', $nombreImagen, 'public');
 
-
-        DB::table('articles')->insert([
-            'id' => $id,
-            'titulo' => $titol,
-            'article' => $contenido,
-            'autor' => $usuario,
-            'src' => $imagenPath
-        ]);
+            DB::table('articles')->insert([
+                'id' => $id,
+                'titulo' => $titol,
+                'article' => $contenido,
+                'autor' => $usuario,
+                'src' => 'images/' . $nombreImagen
+            ]);
+        } else {
+            // Si no se seleccionó una imagen, guardar solo los datos del artículo
+            $contenido = $request->contentArt;
+            $titulo = $request->titulo;
+            DB::table('articles')->insert([
+                'titulo' => $titulo,
+                'article' => $contenido,
+                'autor' => $usuario, // Obtener el nombre del usuario autenticado
+                'src' => 'images/claqueta_accion.png'
+            ]);
+        }
         return redirect()->route('dashboard.log')->with('success', '¡Artículo creado correctamente!');
     }
 
@@ -69,9 +80,11 @@ class controlador_index extends Controller
     public function showCreate()
     {
         $lastId = DB::table('articles')->select('*')->orderBy('id', 'DESC')->first();
-        if($lastId == null){
+        if ($lastId == null) {
             $newId = 1;
-        }else {$newId = $lastId->id + 1;}
+        } else {
+            $newId = $lastId->id + 1;
+        }
         return view('showCreate', compact('newId'));
     }
 
@@ -107,19 +120,37 @@ class controlador_index extends Controller
     {
         $contenido = $request->contentArt;
         $titol = $request->titolArt;
-        DB::table('articles')->where('id', $id)->update([
-            'titulo' => $titol,
-            'article' => $contenido
-        ]);
+
+        
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,webp|max:2048' // Validar que se suba una imagen válida y con un tamaño máximo de 2MB
+                // Resto de las validaciones
+            ]);
+            $imagen = $request->file('image');
+
+            $nombreImagen = $imagen->getClientOriginalName();
+            $imagen->storeAs('images', $nombreImagen, 'public');
+            DB::table('articles')->where('id', $id)->update([
+                'titulo' => $titol,
+                'article' => $contenido,
+                'src' => 'images/' . $nombreImagen
+            ]);
+        } else {
+            DB::table('articles')->where('id', $id)->update([
+                'titulo' => $titol,
+                'article' => $contenido
+            ]);
+        }
+
 
         return redirect()->route('dashboard.log', $id)->with('success', '¡Artículo editado exitosamente!');
-
     }
 
     //Eliminar articulo.
-    public function destroy($id) {
+    public function destroy($id)
+    {
         DB::table('articles')->where('id', $id)->delete();
         return redirect()->route('dashboard.log')->with('success', '¡Artículo eliminado correctamente!');
     }
-
 }

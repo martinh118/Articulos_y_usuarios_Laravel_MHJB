@@ -35,8 +35,9 @@
 
                                     <li class="articulo">
                                         @if($articulo->src)
-                                        <img src="{{ asset($articulo->src) }}" alt="Imagen del artículo">
+                                        <img src="{{ asset($articulo->src) }}" alt="Imagen del artículo" class="imgMovie">
                                         @endif
+                                        <br>
                                         <b>{{ $articulo->{'id'} }}
                                             - {{ $articulo->{'titulo'} }} : </b>
                                         "{{ $articulo->{'article'} }}"
