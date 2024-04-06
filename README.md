@@ -5,13 +5,14 @@
 <p>Abans de començar la correcció i execució de la pàgina web del projecte, és necessari executar les migracions configurades:</p>
 <p>
 En la carpeta /database/migrations haurien d'estar els següents arxius:
-    - 2014_10_12_000000_create_users_table.php
-    - 2014_10_12_100000_create_password_reset_tokens_table
-    - 2014_10_12_100000_create_password_resets_table
-    - 2019_08_19_000000_create_failed_jobs_table
-    - 2019_12_14_000001_create_personal_access_tokens_table
-    - create_articles_table.php
-
+<ul>
+  <li>  - 2014_10_12_000000_create_users_table.php </li>
+   <li> - 2014_10_12_100000_create_password_reset_tokens_table</li>
+  <li>  - 2014_10_12_100000_create_password_resets_table</li>
+   <li> - 2019_08_19_000000_create_failed_jobs_table</li>
+   <li> - 2019_12_14_000001_create_personal_access_tokens_table</li>
+    <li>- create_articles_table.php</li>
+</ul>
 On es crearan les taules corresponents pel correcte funcionament de la web.</p>
 
 <p>
