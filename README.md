@@ -51,7 +51,7 @@ En cas que l'usuari s'hagi oblidat la contrasenya, podrà fer servir l'opció 'F
 <h3>Administrar articles</h3>
 <p>En la pàgina inicial amb l'usuari inicialitzat es podrà visualitzar tots els articles disponibles a la base de dades.
 
-El botó de color blau a dalt a l'esquerra de la pàgina permet crear un nou article, on automàticament selecciona el nou identificador de l'article. Les dades a omplir de l'article són, el títol, el contingut, i una imatge a visualitzar.
+El botó de color blau a dalt a l'esquerra de la pàgina permet crear un nou article, on automàticament selecciona el nou identificador de l'article. Les dades a omplir de l'article són, el títol, el contingut, i una imatge a visualitzar. Un cop es creguí l'article, es tornarà a la pàgina inicial de l'usuari i es mostrarà el missatge d'article creat correctament..
     
 L'usuari també podrà editar qualsevol article. Cada article conté un botó <b>'Edit'</b>, on aquest obre un formulari amb les dades de l'article.
 Dins d'aquest article existeix l'opció d'eliminar l'article seleccionat.
