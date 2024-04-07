@@ -2,7 +2,12 @@
 
 <h2>Abans de començar...</h2>
 
-<p>Abans de començar la correcció i execució de la pàgina web del projecte, és necessari executar les migracions configurades:</p>
+<p><b>Abans de començar la correcció i execució de la pàgina web del projecte, és necessari executar les seüents accions:</b></p>
+
+ <h3>Arxiu .env</h3>
+<p>És important assegurar-se de copiar el contingut de l'arxiu <b>'.env.example'</b> ubicat a l'arxiu arrel, i pegar el contingut a l'arxiu <b>.env</b></p>
+
+<h3>Migracions</h3>
 <p>
 En la carpeta /database/migrations haurien d'estar els següents arxius:
 <ul>
@@ -21,7 +26,12 @@ Comanda a executar dins la carpeta del projecte: <b>php artisan migrate</b>
 En el moment de preguntar si voldries crear la base de dades <b>'pr07_bbdd_mhjb'</b>, assegurar-se de seleccionar 'yes'
 </p>
 
+<h3>Importació</h3>
 <p>Un cop realitzat la migració, accedir a la base de dades i executar l'arxiu d'importació ubicat a l'arxiu arrel del projecte <b>'import_BBDD_pr07_mhjb.sql'</b></p>
+
+<p>
+    
+</p>
 
 <p>A partir d'aquí es podrà accedir a la web amb les dades necessàries amb la ruta:
 <b>http://practica07_mhjb.test</b> </p>
