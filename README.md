@@ -2,7 +2,12 @@
 
 <h2>Abans de començar...</h2>
 
-<p>Abans de començar la correcció i execució de la pàgina web del projecte, és necessari executar les migracions configurades:</p>
+<p><b>Abans de començar la correcció i execució de la pàgina web del projecte, és necessari executar les seüents accions:</b></p>
+
+ <h3>Arxiu .env</h3>
+<p>És important assegurar-se de copiar el contingut de l'arxiu <b>'.env.example'</b> ubicat a l'arxiu arrel, i pegar el contingut a l'arxiu <b>.env</b></p>
+
+<h3>Migracions</h3>
 <p>
 En la carpeta /database/migrations haurien d'estar els següents arxius:
 <ul>
@@ -21,7 +26,12 @@ Comanda a executar dins la carpeta del projecte: <b>php artisan migrate</b>
 En el moment de preguntar si voldries crear la base de dades <b>'pr07_bbdd_mhjb'</b>, assegurar-se de seleccionar 'yes'
 </p>
 
+<h3>Importació</h3>
 <p>Un cop realitzat la migració, accedir a la base de dades i executar l'arxiu d'importació ubicat a l'arxiu arrel del projecte <b>'import_BBDD_pr07_mhjb.sql'</b></p>
+
+<p>
+    
+</p>
 
 <p>A partir d'aquí es podrà accedir a la web amb les dades necessàries amb la ruta:
 <b>http://practica07_mhjb.test</b> </p>
@@ -36,7 +46,7 @@ En el moment de preguntar si voldries crear la base de dades <b>'pr07_bbdd_mhjb'
 
 <h3> Iniciar sessió </h3>
 <p>Si l'usuari ja està registrat, podrà iniciar sessió a la pàgina.
-Cal destacar que l'opció 'Forget your password' no funciona.</p>
+En cas que l'usuari s'hagi oblidat la contrasenya, podrà fer servir l'opció 'Forget your password?', on obre un formulari per aplicar el correu electrònic on es vol que s'enviï l'enllaç de canviar la contrasenya.</p>
 
 <h3>Administrar articles</h3>
 <p>En la pàgina inicial amb l'usuari inicialitzat es podrà visualitzar tots els articles disponibles a la base de dades.
