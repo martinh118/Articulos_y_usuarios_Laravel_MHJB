@@ -36,7 +36,7 @@ En el moment de preguntar si voldries crear la base de dades <b>'pr07_bbdd_mhjb'
 
 <h3> Iniciar sessió </h3>
 <p>Si l'usuari ja està registrat, podrà iniciar sessió a la pàgina.
-Cal destacar que l'opció 'Forget your password' no funciona.</p>
+En cas que l'usuari s'hagi oblidat la contrasenya, podrà fer servir l'opció 'Forget your password?', on obre un formulari per aplicar el correu electrònic on es vol que s'enviï l'enllaç de canviar la contrasenya.</p>
 
 <h3>Administrar articles</h3>
 <p>En la pàgina inicial amb l'usuari inicialitzat es podrà visualitzar tots els articles disponibles a la base de dades.
