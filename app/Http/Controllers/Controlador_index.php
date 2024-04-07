@@ -22,7 +22,12 @@ class controlador_index extends Controller
         return view('dashboard', compact('arts'));
     }
 
-
+    //Obtener los articulos propios para mostrarlos en la pagina de usuario.
+    public function ownArticles($usuario)
+    {  
+        $arts = DB::table('articles')->select('*')->where('autor', $usuario)->simplePaginate(5);
+        return view('articlesUser', compact('arts'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,30 +47,24 @@ class controlador_index extends Controller
         $titol = $request->titolArt;
 
         if ($request->hasFile('image')) {
-            $request->validate([
-                'image' => 'image|mimes:jpeg,png,jpg,webp|max:2048' // Validar que se suba una imagen válida y con un tamaño máximo de 2MB
-                // Resto de las validaciones
-            ]);
-            
-            $imagen = $request->file('image');
-
-            // Generar un nombre único para la imagen
-            $nombreImagen = $imagen->getClientOriginalName();
-            $imagen->storeAs('images', $nombreImagen, 'public');
+            $imagePost = 'IMAGE-POST' . time() . $request->file('image')->getClientOriginalName();
+            // ec
+            $filee = $request->image;
+            $fileName = $filee->getClientOriginalName();
+            $filee->move('public/images', $fileName);
+            $image = $fileName;
 
             DB::table('articles')->insert([
                 'id' => $id,
                 'titulo' => $titol,
-                'article' => $contenido,
+                'article' => $contenido . $request->image,
                 'autor' => $usuario,
-                'src' => 'images/' . $nombreImagen
+                'src' => 'images/' . $image
             ]);
         } else {
-            // Si no se seleccionó una imagen, guardar solo los datos del artículo
-            $contenido = $request->contentArt;
-            $titulo = $request->titulo;
             DB::table('articles')->insert([
-                'titulo' => $titulo,
+                'id' => $id,
+                'titulo' => $titol,
                 'article' => $contenido,
                 'autor' => $usuario, // Obtener el nombre del usuario autenticado
                 'src' => 'images/claqueta_accion.png'
@@ -121,7 +120,7 @@ class controlador_index extends Controller
         $contenido = $request->contentArt;
         $titol = $request->titolArt;
 
-        
+
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'image|mimes:jpeg,png,jpg,webp|max:2048' // Validar que se suba una imagen válida y con un tamaño máximo de 2MB

@@ -22,6 +22,9 @@ Route::get('/', [controlador_index::class, 'index']);
 //Llama a la función de la clase controlador_index para visualizar los articulos con la opcion de editarlos.
 Route::get('/dashboard', [controlador_index::class, 'indexLogged'])->middleware(['auth', 'verified'])->name('dashboard.log');
 
+//Llama a la función de la clase controlador_index para visualizar los articulos del usuario.
+Route::get('/articlesUser/{usuario}', [controlador_index::class, 'ownArticles'])->middleware(['auth', 'verified'])->name('dashboard.user');
+
 //Llama a la función de la clase controlador_index para mostrar la pagina de edicion del articulo seleccionado.
 Route::get('/dashboard/{articulo}', [controlador_index::class, 'edit'])->name('dashboard.edit');
 
@@ -36,6 +39,7 @@ Route::get('/showCreate', [controlador_index::class, 'showCreate'])->name('dashb
 
 //Llama a la función de la clase controlador_index para crear un nuevo articulo.
 Route::post('/create/{usuario}', [controlador_index::class, 'crearArticulo'])->name('createArticle');
+
 
 
 // Route::get('/dashboard', function () {
