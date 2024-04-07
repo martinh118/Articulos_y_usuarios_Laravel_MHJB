@@ -57,7 +57,7 @@ class controlador_index extends Controller
             DB::table('articles')->insert([
                 'id' => $id,
                 'titulo' => $titol,
-                'article' => $contenido . $request->image,
+                'article' => $contenido,
                 'autor' => $usuario,
                 'src' => 'images/' . $image
             ]);

@@ -14,7 +14,7 @@
 </script>
 
 
-<form action="{{route('dashboard.update', $articuloUnico->{'id'})}}" method="POST">
+<form action="{{route('dashboard.update', $articuloUnico->{'id'})}}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="idArticle">Id Article</label>
     <input type="text" id="idArticle" name="idArt" disabled value="{{ $articuloUnico->{'id'} }}">

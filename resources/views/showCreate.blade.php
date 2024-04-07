@@ -13,7 +13,7 @@
     }
 </script>
 
-<form action="{{route('createArticle', ['usuario' => Auth::user()->name])}}" method="POST">
+<form action="{{route('createArticle', ['usuario' => Auth::user()->name])}}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="idArticle">Id Article</label>
     <input type="text" id="idArticle" name="idArt" value="{{ $newId }}" readonly>
